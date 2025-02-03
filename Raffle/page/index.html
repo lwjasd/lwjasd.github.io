@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>茜草街道天天乐抽奖</title>
+        <link href="/css/index.css" rel="stylesheet">
+        <link href="/image/favicon.ico" rel="icon">
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<div id="NavigationBar">
+    <div id="NavigationBarleft">
+        <img src="/image/navigationbarimage.png" id="NavigationBarImage">
+        <img src="/image/navigationbartitle.png" id="navigationbartitle">
+    </div>
+    <h1 id="NavigationBarright">天天乐抽奖</h1>
+</div>
+
+<!-- 主内容（转盘） -->
+<div id="maincontent">
+    <canvas id="wheel" width="630" height="630"></canvas>
+    <canvas id="pointer" width="630" height="630"></canvas>
+    <button id="maincontentsetting" onclick="showSettingmask()">设置</button>
+    <button id="maincontentclear" onclick="showClearmask()">清除数据</button>
+    <button id="begin">开始</button>
+</div>
+
+<!-- 设置蒙层弹窗 -->
+<div id="settingmask">
+    <div class="settingmaskmodal">
+        <label class="settingmaskmodallabel">奖项:<input type="text" class="settingmaskmodalinput" id="prizesInput" placeholder="请使用英文逗号隔开！"></label>
+        <label class="settingmaskmodallabel">颜色:<input type="text" class="settingmaskmodalinput" id="colorsInput" placeholder="请使用十六进制代码！"></label>
+        <label class="settingmaskmodallabel">概率:<input type="text" class="settingmaskmodalinput" id="probabilitiesInput" placeholder="总和为100！"></label>
+        <label class="settingmaskmodallabel">密码:<input type="password" class="settingmaskmodalinput" id="passwordInput" placeholder="请输入密码！" oninput="value=value.replace(/[^\d]/g,'')"></label>
+        <button onclick="updateSettings()">修改</button>
+        <p id="setting-error" style="text-align: center; color: red;"></p>
+    </div>
+</div>
+
+<!-- 清除数据蒙层弹窗 -->
+<div id="clearmask">
+    <div class="clearmaskmodal">
+        <label class="clearmaskmodallabel">密码:<input type="password" class="clearmaskmodalinput" id="clearPassword" placeholder="请输入密码！" oninput="value=value.replace(/[^\d]/g,'')"></label>
+        <button onclick="clearData()">确定删除</button>
+        <p id="clearmask-error" style="text-align: center; color: red;"></p>
+    </div>
+</div>
+
+<!-- 中奖结果 -->
+<div id="resultmask">
+    <div class="resultmaskmodal">
+        <p id="resultText"></p>
+        <button onclick="hideResultmask()" id="hideResultmask">确定</button>
+    </div>
+</div>
+
+<!-- 中奖情况统计 -->
+<div id="results">
+    <h1>中奖情况</h1>
+    <ul id="results-list"></ul>
+</div>
+
+<script src="/js/index.js"></script>
+</body>
+</html>
